@@ -1,0 +1,49 @@
+<div class="div-title">
+  <h1 class="title">list of all article</h1>
+</div>
+
+<table class="table table-dark">
+  <tr>
+    <th>n°</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Text</th>
+    <th>Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @number = 0 %>
+  <% @articles.each do |article| %>
+  <tr>
+    <td><%= @number += 1 %></td>
+    <td><%= article.title %></td>
+    <td><%= article.author %></td>
+    <td><%= article.text %></td>
+    <td><%= article.created_at %></td>
+    <td>
+      <button class="btn btn-info btn-article">
+        <%= link_to 'Show', article_path(article) %></td>
+      </button>
+    </td>
+    <td>
+        <% if current_user.present? && current_user.role == "admin" || current_user.present? && current_user.id == article.user_id %>
+      <button class="btn btn-success btn-article">
+        <%= link_to 'Edit', edit_article_path(article) %>
+      </button>
+      <% end %>
+    </td>
+    <td>
+        <% if current_user.present? && current_user.role == "admin" || current_user.present? && current_user.id == article.user_id %>
+        <button class="btn btn-danger btn-article"><%= link_to 'Destroy', article_path(article), method: :delete, data: {
+          confirm: 'are you sure?' } %>
+        </button>
+        <% end %>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
+<button class="btn btn-primary btn-article">
+  <%= link_to 'New', new_article_path(@article) %>
+</button>

@@ -1,0 +1,25 @@
+<h1>Show page</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @article.author %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @article.created_at %>
+</p>
+
+<p>
+  <%= link_to 'Articles', articles_path(@articles) %>
+</p>

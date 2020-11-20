@@ -1,0 +1,13 @@
+<% if current_user %>
+      Logged in as <%= current_user.email %>.
+    <% end %>
+    <% if  current_user.present? && current_user.role == "admin" %>
+    <p>admin</p>
+  </div>
+  <% end %>
+<div class="container">
+  <div class="container-index">
+    <p id="notice"><%= notice %></p><h1>Welcome</h1>
+    <p>My name is Maximus Decimus Meridius, Commander of the Armies of the North, General of the Felix Legions, loyal servant to the true emperor, 
+      Marcus Aurelius. Father to a murdered son, husband to a murdered wife. And I will have my vengeance, in this life or the next.</p>
+</div>
